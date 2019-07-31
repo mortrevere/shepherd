@@ -1,0 +1,162 @@
+*, html {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: 'Lato';
+}
+
+.red {
+	background-color: #FA0033 !important;
+}
+
+.green {
+	background-color: #3CCC4E !important;
+}
+
+.yellow {
+	background-color: #FFDC3A !important;
+}
+
+.redf {
+	color: #FA0033 !important;
+}
+
+.greenf {
+	color: #3CCC4E !important;
+}
+
+.yellowf {
+	color: #FFDC3A !important;
+}
+
+.hidden {
+	display: none;
+}
+
+.host {
+	width: 19%;
+	margin: 1%;
+	display: inline-block;
+	background-color: #3CCC4E;
+	color: #FFF;
+	padding: 2%;
+	line-height: 22px;
+	vertical-align: top
+}
+
+.host.disabled {
+	background-color: #C5C5C5;
+}
+
+.host.disabled .ram-value {
+	color: #C5C5C5 !important;
+}
+
+/*.host.disabled p {
+ color:#48EC5D;
+ }*/
+
+.host p {
+	margin: 3px;
+	border-radius: 4px;
+}
+
+.host h3 {
+	text-align: center;
+	font-size: 1.3em;
+}
+
+.host h5 {
+    text-align: center;
+}
+
+.host ul {
+	list-style-type: none;
+}
+
+.host .heartbeat-indicator {
+	color: #FFF !important;
+}
+
+#lag {
+	position: fixed;
+	top: -1px;
+	right: 1%;
+}
+
+.ram-value {
+	font-size: 10pt;
+	/*background-color: #3CCC4E;*/
+	color: #FFF;
+	padding: 1px 5px;
+}
+
+.ram-bar {
+	border: 1px solid #FFF;
+}
+
+hr {
+	display: block;
+	clear: both;
+	height: 1px;
+	margin: 10px 0 15px;
+	padding: 0;
+	border: 0;
+	background-color: #FFF;
+}
+
+.process-list {
+	color: #4D8499;
+	background-color: #FFF;
+	font-size: 10pt;
+	line-height: 12pt;
+}
+
+.process-list li {
+	padding: 2px 4px;
+}
+
+.process-list li.red, .process-list li.yellow {
+	color: #FFF;
+}
+
+.ping-list {
+
+}
+
+.ping-list li {
+	display: inline-block;
+	margin: 2px;
+	background-color: #4D8499;
+	color: #FFF;
+	padding: 2px 9px;
+	width: auto;
+	font-size: 10pt;
+}
+
+.ws-list {
+
+}
+
+.ws-list li {
+	display: inline-block;
+	margin: 2px;
+	background-color: #4D8499;
+	color: #FFF;
+	padding: 2px 9px;
+	width: auto;
+	font-size: 10pt;
+}
+
+.ws-list li:hover {
+	background-color: #5249CC;
+}
+
+.ws-list li a, .ws-list li a:visited {
+	text-decoration: none;
+	color: #FFF;
+}

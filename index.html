@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Shepherd</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<link rel="stylesheet" href="style.css">
+		<script src="script.js" defer></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	</head>
+	<body>
+		<!--<textarea id="mn-dump-list"></textarea>-->
+		<!-- page content -->
+		<div id="app-shepherd">
+			<div id="lag">
+				{{lag}}
+			</div>
+			<div class="host" :class="{disabled : (host.lag > 42)}" v-for="(host, index) in shosts">
+                <h3>{{host.name}}</h3>
+                <h5>{{hostRoles[host.name]}}</h5>
+
+				<p :class="{ red : !host.upToDate}">
+					<i :class="{ 'fa-times' : !host.upToDate,  'fa-check' : host.upToDate}" class="fa fa-fw"></i>&nbsp;{{host.short_release_id}}
+				</p>
+
+				<p>
+					<i class="fa fa-fw fa-network-wired"></i>&nbsp;{{host.ip}}
+				</p>
+				<p>
+					<i class="fa fa-fw fa-hdd"></i>&nbsp;{{host.disk_usage}}
+				</p>
+				<!--<p>
+				<i class="fa fa-fw fa-clock"></i>&nbsp;{{host.time}}
+				</p>-->
+				<p>
+					<i class="fa fa-fw fa-cogs"></i>&nbsp;{{host.load}} ({{host.cpu}} %)
+				</p>
+
+				<p>
+					<i class="fa fa-fw fa-temperature-low"></i>&nbsp;{{host.temp}} &deg;C
+				</p>
+
+				<p :style="{background : host.ramcss}" class="ram-bar">
+					<i :class="{greenf : (host.ram <= 50 && host.ram > 5.5)}" class="fa fa-fw fa-microchip"></i>&nbsp; <span :class="{green : (host.ram <= 25 && host.ram > 9), white : (host.ram > 25 && host.ram <= 50), greenf : (host.ram > 25 && host.ram <= 50), yellow : (host.ram > 50 && host.ram <= 65), red : (host.ram > 65)}" class="ram-value">{{host.ram}} %</span>
+				</p>
+				<p :class="{ yellow : !host.internet}">
+					<i class="fa fa-fw fa-link"></i>&nbsp;{{host.internetRS}}
+				</p>
+
+				<p :class="{ yellow : !host.dns}">
+					<i class="fa fa-fw fa-atlas"></i>&nbsp;{{host.dnsRS}}
+				</p>
+
+				<p class="heartbeat-indicator" :class="{yellow : (host.lag > 29 && host.lag <= 42), red : (host.lag > 42)}">
+					<i class="fa fa-fw fa-hand-holding-heart"></i>&nbsp;{{host.lag}}
+				</p>
+
+				<ul class="ping-list">
+					<li v-if="!peer.latency" v-for="peer in host.LAN" :class="{red : !peer.latency}">
+						<!--{{peer.name}} : {{peer.latency}}-->
+						{{peer.name}}
+					</li>
+				</ul>
+
+				<div v-if="host.webservices.length !== 0">
+					<hr/>
+					<ul class="ws-list">
+						<li v-for="ws in host.webservices" >
+							<a target="_blank" :href="ws.url"> {{ws.process}} @ {{ws.port}}</a>
+						</li>
+					</ul>
+				</div>
+
+				<hr/>
+				<ul class="process-list">
+					<li v-for="process in host.processes" :class="{yellow : (process.load > 25 && process.load <= 50), red : (process.load > 50)}">
+						{{process.load}} {{process.process}}
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</body>
+</html>
