@@ -7,6 +7,9 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+apt update
+apt install -y netcat iputils-ping bc net-tools cron
+
 (echo "@reboot ${currentdir}/heartbeat.sh &") | crontab -
 
-${currentdir}/heartbeat.sh &
+${currentdir}/heartbeat.sh & 2>&1 > /dev/null

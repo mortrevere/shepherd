@@ -1,7 +1,7 @@
 git rev-parse HEAD
 hostname
 hostname -I
-df -h | grep sd.2
+df -h | grep -m 1 sd.[1-9]
 date +%R:%S
 uptime
 ping -w 3 -c 1 8.8.8.8 > /dev/null && echo 'internet up' || echo 'internet down'
