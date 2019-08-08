@@ -12,4 +12,4 @@ apt install -y netcat iputils-ping bc net-tools cron
 
 (echo "@reboot ${currentdir}/heartbeat.sh &") | crontab -
 
-${currentdir}/heartbeat.sh & 2>&1 > /dev/null
+${currentdir}/heartbeat.sh </dev/null &>/dev/null &
