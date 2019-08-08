@@ -14,5 +14,6 @@ apt install -y netcat iputils-ping bc net-tools cron
 
 ${currentdir}/heartbeat.sh </dev/null &>/dev/null &
 
+sleep 3
 headip=$(ping -c 1 -w 1 shepherd-head | grep PING | cut -d' ' -f 2,3)
 printf "\nShepherd Agent is installed and running ! \n\treporting @ $headip \n\n"
