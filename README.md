@@ -33,6 +33,11 @@ By default it reports :
 - Exposed webservices
 - Top 5 processes
 
+Bonus one-liner for docker containers that don't ship with git :
+
+```
+apt update && apt install -y git && git clone https://github.com/mortrevere/shepherd.git && cd shepherd && sed -i 's/10.0.0.10/<MIDDLEWARE IP ADDRESS>/' ./agent/hosts && ./agent/install.sh
+```
 
 ## Middleware
 
